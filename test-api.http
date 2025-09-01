@@ -1,0 +1,76 @@
+### User Service - Создать пользователя
+POST http://localhost:8081/api/users
+Content-Type: application/json
+
+{
+  "fullName": "Иван Иванов",
+  "deliveryAddress": "ул. Пушкина, д. 10, кв. 5",
+  "phoneNumber": "+7-900-123-45-67",
+  "email": "ivan@example.com"
+}
+
+### User Service - Создать второго пользователя
+POST http://localhost:8081/api/users
+Content-Type: application/json
+
+{
+  "fullName": "Петр Петров",
+  "deliveryAddress": "ул. Лермонтова, д. 25, кв. 12",
+  "phoneNumber": "+7-900-987-65-43",
+  "email": "petr@example.com"
+}
+
+### User Service - Получить пользователя по ID
+GET http://localhost:8081/api/users/1
+
+### User Service - Получить второго пользователя
+GET http://localhost:8081/api/users/2
+
+###
+
+### Order Service - Создать заказ для пользователя 1
+POST http://localhost:8082/api/orders
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "amount": 1500.50,
+  "currency": "RUB",
+  "items": ["Товар 1", "Товар 2", "Товар 3"]
+}
+
+### Order Service - Создать второй заказ для пользователя 1
+POST http://localhost:8082/api/orders
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "amount": 2300.00,
+  "currency": "RUB",
+  "items": ["Товар 4", "Товар 5"]
+}
+
+### Order Service - Создать заказ для пользователя 2
+POST http://localhost:8082/api/orders
+Content-Type: application/json
+
+{
+  "userId": 2,
+  "amount": 750.25,
+  "currency": "RUB",
+  "items": ["Товар 6"]
+}
+
+### Order Service - Получить заказы пользователя 1
+GET http://localhost:8082/api/orders/by-user/1
+
+### Order Service - Получить заказы пользователя 2
+GET http://localhost:8082/api/orders/by-user/2
+
+###
+
+### BFF Service - Получить профиль пользователя 1
+GET http://localhost:8083/api/site-bff/user/1
+
+### BFF Service - Получить профиль пользователя 2
+GET http://localhost:8083/api/site-bff/user/2
